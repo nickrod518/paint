@@ -1,0 +1,37 @@
+<!doctype html>
+<head>
+    <title>Nick's Paint App</title>
+    <script type="text/javascript" src="draw.js"></script>
+</head>
+<body>
+    <h1>Something to pass the time</h1>
+    <p>I created this little paint app entirely with HTML5 canvas and JavaScript. Unfortunately, at the moment it only works if you are using Chrome or Internet Explorer. I would not wish Internet Explorer on anyone, so please just download <a href="http://www.google.com/intl/en/chrome/">Chrome</a>. It may be your only opportunity to draw on my face, so take advantage!</p>
+    <br />
+    <p class="controls">
+    Picture
+    <select id="picture">
+        <option value="hike">hike</option>
+        <option value="car">car</option>
+        <option value="rpg">rpg</option>
+        <option value="gun">gun</option>
+        <option value="drums">drums</option>
+    </select>
+    Tools
+    <select id="tools">
+        <option value="brush">brush</option>
+        <option value="line">line</option>
+        <option value="circle">circle</option>
+    </select>
+    Color
+    <input id="color" type="color" value="white"/>
+    <br />
+    Width
+    <input id="width" type="range" min="1" max="100" value="3"/>
+    <br />
+    <input id="clear" type="button" value="clear"/>
+    <input id="save" type="button" value="save"/>
+    </p>
+    <br />
+    <canvas width="500" height="374" id="canvas" style="border:solid;">If you can read this, then your browser does not support HTML5 Canvas or JavaScript. Please do yourself a favor and upgrade. :(</canvas>
+</body>
+</html>
