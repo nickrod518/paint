@@ -37,7 +37,7 @@ function draw() {
     
     // Open a new URL with the picture and canvas modifications to save
     saveButton.onclick = function save() {
-        window.location = canvas.toDataURL();
+        window.location = canvas.toDataURL('image/png');
     }
     
     // Clear all canvas modifications
