@@ -30,7 +30,7 @@ function draw() {
             canvas.height = img.height;
             ctx.drawImage(img, 0, 0);
         }
-        img.src = "http://nickrod518.dyndns.org/images/" + picture.value + ".jpg";
+        img.src = "images/" + picture.value;
         loaded = true;
         currentPicture = picture.value;
     }
