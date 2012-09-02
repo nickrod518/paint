@@ -115,7 +115,9 @@ function draw() {
 
         // Draw rectangle from starting coords with opposite corner set as release coords
         if (tool.value == "rectangle") {
-
+            ctx.fillRect(x1, y1, mouseEvent.clientX-canvas.offsetLeft-x1, mouseEvent.clientY-canvas.offsetTop-y1);
+            x1 = 0;
+            y1 = 0;
         }
     }
     
