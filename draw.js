@@ -27,6 +27,7 @@ function draw() {
     if (!loaded || (currentPicture != picture.value)) {
         var img = new Image();
         img.onload = function(){
+            canvas.width = img.width;
             canvas.height = img.height;
             ctx.drawImage(img, 0, 0);
         }
