@@ -5,17 +5,13 @@
 </head>
 <body>
     <h1>Paint</h1>
-    <p>I created this little paint app entirely with HTML5 canvas and JavaScript. It may be your only opportunity to draw on my face, so take advantage!</p>
-    <br />
-    <p class="controls">
+
     Picture
     <select id="picture">
-        <option value="hike.jpg">hike</option>
-        <option value="car.jpg">car</option>
-        <option value="rpg.jpg">rpg</option>
-        <option value="gun.jpg">gun</option>
-        <option value="drums.jpg">drums</option>
+        // put your pictures here (they should be located in /images)
+        <option value="sample.jpg">sample</option>
     </select>
+
     Tools
     <select id="tools">
         <option value="brush">brush</option>
@@ -23,16 +19,17 @@
         <option value="circle">circle</option>
         <option value="rectangle">rectangle</option>
     </select>
+
     Color
     <input id="color" type="color" value="white"/>
-    <br />
+
     Width
     <input id="width" type="range" min="1" max="100" value="3"/>
-    <br />
+
     <input id="clear" type="button" value="clear"/>
+
     <input id="save" type="button" value="save"/>
-    </p>
-    <br />
-    <canvas width="500" height="500" id="canvas">If you can read this, then your browser does not support HTML5 Canvas or JavaScript. Please do yourself a favor and upgrade. :(</canvas>
+
+    <canvas width="500" height="500" id="canvas">If you can read this, then your browser does not support HTML5 Canvas or JavaScript. :(</canvas>
 </body>
 </html>
