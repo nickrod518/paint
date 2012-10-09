@@ -49,13 +49,17 @@ function draw() {
     
     // Paint, depending on tool selected
     canvas.onmousedown = function(mouseEvent) {
+        // Get X position of mouse
+        var xPos = mouseEvent.pageX-canvas.offsetLeft;
+        // Get Y position of mouse
+        var yPos = mouseEvent.pageY-canvas.offsetTop;
         
         // Brush tool
         if (tool.value == "brush") {
             mouseDown = true;
             
             ctx.beginPath();
-            ctx.arc(mouseEvent.clientX-canvas.offsetLeft, mouseEvent.clientY-canvas.offsetTop, width.value/2, 0, 2*Math.PI);
+            ctx.arc(xPos, yPos, width.value/2, 0, 2*Math.PI);
             ctx.closePath();
             ctx.fill();
             ctx.beginPath();
@@ -65,39 +69,49 @@ function draw() {
         // Line tool
         if (tool.value == "line") {
             ctx.beginPath();
-            ctx.moveTo(mouseEvent.clientX-canvas.offsetLeft, mouseEvent.clientY-canvas.offsetTop);
+            ctx.moveTo(xPos, yPos);
         }
 
         // Get Circle or Rectangle starting coordinates
         if ((tool.value == "circle") || (tool.value == "rectangle")) {
-            x1 = mouseEvent.clientX-canvas.offsetLeft;
-            y1 = mouseEvent.clientY-canvas.offsetTop;
+            x1 = xPos;
+            y1 = yPos;
         }
     }
     
     // If the mouse is still pressed and the brush tool is selected, paint
     canvas.onmousemove = function(mouseEvent) {
+        // Get X position of mouse
+        var xPos = mouseEvent.pageX-canvas.offsetLeft;
+        // Get Y position of mouse
+        var yPos = mouseEvent.pageY-canvas.offsetTop;
+        
         if (tool.value == "brush" && mouseDown) {
-            ctx.lineTo(mouseEvent.clientX-canvas.offsetLeft, mouseEvent.clientY-canvas.offsetTop);
+            ctx.lineTo(xPos, yPos);
             ctx.stroke();
         }
     }
     
     // Events when mouse button is released
     canvas.onmouseup = function(mouseEvent) {
+        // Get X position of mouse
+        var xPos = mouseEvent.pageX-canvas.offsetLeft;
+        // Get Y position of mouse
+        var yPos = mouseEvent.pageY-canvas.offsetTop;
+    
         // Close brush path when button is released
         if (tool.value == "brush") {
             ctx.closePath();
             mouseDown = false;
             ctx.beginPath();
-            ctx.arc(mouseEvent.clientX-canvas.offsetLeft, mouseEvent.clientY-canvas.offsetTop, width.value/2, 0, 2*Math.PI);
+            ctx.arc(xPos, yPos, width.value/2, 0, 2*Math.PI);
             ctx.closePath();
             ctx.fill();
         }
 
         // Draw line from starting coords to release position coords when released
         if (tool.value == "line") {
-            ctx.lineTo(mouseEvent.clientX-canvas.offsetLeft, mouseEvent.clientY-canvas.offsetTop);
+            ctx.lineTo(xPos, yPos);
             ctx.stroke();
             ctx.closePath();
         }
@@ -105,7 +119,7 @@ function draw() {
         // Draw circle from starting coords with radius to the current release position
         if (tool.value == "circle") {
             ctx.beginPath();
-            r = Math.sqrt(Math.pow(mouseEvent.clientX-canvas.offsetLeft-x1, 2) + Math.pow(mouseEvent.clientY-canvas.offsetTop-y1, 2));
+            r = Math.sqrt(Math.pow(xPos-x1, 2) + Math.pow(yPos-y1, 2));
             ctx.arc(x1, y1, r, 0, 2*Math.PI);
             ctx.closePath();
             ctx.fill();
@@ -116,7 +130,7 @@ function draw() {
 
         // Draw rectangle from starting coords with opposite corner set as release coords
         if (tool.value == "rectangle") {
-            ctx.fillRect(x1, y1, mouseEvent.clientX-canvas.offsetLeft-x1, mouseEvent.clientY-canvas.offsetTop-y1);
+            ctx.fillRect(x1, y1, xPos-x1, yPos-y1);
             x1 = 0;
             y1 = 0;
         }
